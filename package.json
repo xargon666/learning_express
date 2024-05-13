@@ -1,12 +1,12 @@
 {
   "name": "learning_express",
   "version": "1.0.0",
-  "description": " Express Crash Course (2024 Revamp) \u001b[H\u001b[1;5F\u001b[1;5F",
+  "description": "Learning Express Traversy Media Crash Course (2024 Revamp)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Chris pucknell",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2"
