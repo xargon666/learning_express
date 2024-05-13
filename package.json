@@ -1,0 +1,14 @@
+{
+  "name": "learning_express",
+  "version": "1.0.0",
+  "description": " Express Crash Course (2024 Revamp) \u001b[H\u001b[1;5F\u001b[1;5F",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
