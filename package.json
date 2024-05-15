@@ -2,13 +2,19 @@
   "name": "learning_express",
   "version": "1.0.0",
   "description": "Learning Express Traversy Media Crash Course (2024 Revamp)",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js",
+    "dev": "node --watch server.js"
   },
   "author": "Chris pucknell",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
   }
 }
