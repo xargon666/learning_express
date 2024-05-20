@@ -6,6 +6,7 @@ import posts from './routes/posts.js'
 // middleware
 import logger from './middleware/logger.js'
 import errorHandler from './middleware/error.js'
+import notFound from './middleware/notFound.js'
 
 const SERVER_PORT = process.env.SERVER_PORT || 8000
 
@@ -26,7 +27,6 @@ app.use('/api/posts',posts)
 // Error handler 
 app.use(notFound)
 app.use(errorHandler)
-
 
 app.listen(SERVER_PORT, () => console.log(`Server is running on port http://localhost:${SERVER_PORT}`))
 

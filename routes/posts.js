@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     res.status(200).json(posts)
 })
 
-// Get single post
+// Get single post ==================================================
 router.get('/:id', (req, res, next) => {
     const id = parseInt(req.params.id) // parse string into number
     const post = posts.find((post) => post.id === id)
@@ -35,9 +35,8 @@ router.get('/:id', (req, res, next) => {
     res.status(200).json(post)
 })
 
-// Create a new post
+// Create a new post ================================================
 router.post('/', (req, res, next) => {
-    console.log(req.body)
     const newPostId = posts.length + 1
     const newPost = {
         id: newPostId,
@@ -52,7 +51,8 @@ router.post('/', (req, res, next) => {
 
     posts.push(newPost)
     res
-        .status(201).json(posts)
+        .status(201)
+        .json(posts)
 })
 
 
@@ -71,8 +71,6 @@ router.put('/:id', (req, res, next) => {
     post.title = req.body.title
     res.status(200).json(posts)
 })
-
-// Delete Post
 
 // Delete Post ======================================================
 router.delete('/:id', (req, res, next) => {
