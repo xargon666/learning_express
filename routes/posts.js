@@ -7,11 +7,6 @@ let posts = [
     { id: 2, title: 'Post Two' },
     { id: 3, title: 'Post Three' }
 ]
-// Missing Post msg
-const missingPost = (id) => {
-    if (isNaN(id)) return { msg: 'Please search for a valid post id number' }
-    return { msg: `A post with the id of ${id} was not found.` }
-}
 
 // Get all posts
 router.get('/', (req, res) => {
@@ -26,46 +21,51 @@ router.get('/', (req, res) => {
 })
 
 // Get single post
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
     const id = parseInt(req.params.id) // parse string into number
     const post = posts.find((post) => post.id === id)
+
+    // error handling
     if (!post) {
-        return res
-            .status(404)
-            .json(missingPost(id))
+        const error = new Error(`A post with the id of ${id} was not found`)
+        error.status = 404
+        return next(error)
     }
 
     res.status(200).json(post)
 })
 
 // Create a new post
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
     console.log(req.body)
     const newPostId = posts.length + 1
     const newPost = {
         id: newPostId,
         title: req.body.title
     }
+    // error handling
     if (!newPost.title) {
-        return res
-            .status(400)
-            .json({ msg: 'Please include a title' })
+        const error = new Error(`Please include a title`)
+        error.status = 400
+        return next(error)
     }
+
     posts.push(newPost)
     res
-    .status(201).json(posts)
+        .status(201).json(posts)
 })
 
 
-// Update a post
-router.put('/:id', (req, res) => {
+// Update a post ====================================================
+router.put('/:id', (req, res, next) => {
     const id = parseInt(req.params.id)
     const post = posts.find((post) => post.id === id)
 
+    // error handling
     if (!post) {
-        return res
-            .status(404)
-            .json(missingPost(id))
+        const error = new Error(`A post with the id of ${id} was not found`)
+        error.status = 404
+        return next(error)
     }
 
     post.title = req.body.title
@@ -74,18 +74,24 @@ router.put('/:id', (req, res) => {
 
 // Delete Post
 
-router.delete('/:id', (req, res) => {
+// Delete Post ======================================================
+router.delete('/:id', (req, res, next) => {
+    // find post by id
     const id = parseInt(req.params.id)
     const post = posts.find((post) => post.id === id)
 
+    // error handling
     if (!post) {
-        return res
-            .status(404)
-            .json(missingPost(id))
+        const error = new Error(`A post with the id of ${id} was not found`)
+        error.status = 404
+        return next(error)
     }
 
+    // update database
     posts.filter((post) => post.id === id)
+    // return post
     res.status(200).json(posts)
+
 })
 
 export default router
