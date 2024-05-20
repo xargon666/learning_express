@@ -23,13 +23,8 @@ app.use(logger)
 // Routes
 app.use('/api/posts',posts)
 
-// Call errorhandler for missing routes
-app.use((req,res,next)=>{
-    const error = new Error('Route Not Found')
-    next(error)
-})
-
-// Error handler middleware
+// Error handler 
+app.use(notFound)
 app.use(errorHandler)
 
 
