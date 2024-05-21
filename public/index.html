@@ -4,19 +4,40 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Server</title>
+        <link rel="stylesheet" href="./styles.css" />
+        <link rel="shortcut icon" href="./static/images/favicon.ico" type="image/x-icon">
         <script defer src="./js/main.js"></script>
     </head>
     <body>
-        <h1>Welcome to the Server!</h1>
-
-        <h2>Links</h2>
-        <ul>
-            <li><a href="/about.html">About</a></li>
-        </ul>
-
-        <h2>Posts</h2>
-        <button id="get-posts-btn">Get Posts</button>
-        <div id="output"></div>
-
+        <header>
+            <h1>Welcome to the Server!</h1>
+        </header>
+        <section>
+            <div class="container">
+                <h2>Links</h2>
+                <ul class="horizontal-list">
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Add Post</h2>
+                </div>
+                <form id="add-post-form">
+                    <label for="title">Title</label>
+                    <input required type="text" name="title" id="title"></input></br></br>
+                    <input type="submit" value="Send Request" class="btn-primary"/>
+                </form>
+            </div>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Posts</h2>
+                    <button id="get-posts-btn" class="btn-primary">
+                        Get Posts
+                    </button>
+                </div>
+                <div id="output"></div>
+            </div>
+        </section>
     </body>
 </html>
