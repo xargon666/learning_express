@@ -1,9 +1,10 @@
-import { SERVER_ADDRESS } from "../../server"
+const SERVER_ADDRESS = 'http://localhost:8000'
 
 console.log(`main.js loaded`)
+console.log(`Pulling from ${SERVER_ADDRESS}`)
 
-const output = document.querySelector('#output')
-const button = document.querySelector('#get-posts-btn')
+const output = document.getElementById('output')
+const button = document.getElementById('get-posts-btn')
 button.style.color = 'red'
 // Get and show posts
 async function showPosts() {
